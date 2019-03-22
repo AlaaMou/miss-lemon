@@ -1,0 +1,51 @@
+body{
+  font-family: 'Muli', sans-serif;
+
+}
+
+#main-nav{
+   font-size: 1.2rem;
+}
+
+#main-nav li{
+	padding-right: 1.5rem;
+	padding-left: 1.5rem;
+	letter-spacing: .09rem;
+}
+#main-nav li a:hover{
+	color: #b17d05;
+}
+
+#about-me p{
+	font-size: 1.1rem;
+}
+
+
+#social a{
+	color: #b17d05;
+}
+
+#social .contact{
+	color: #b17d05;
+}
+
+
+#footer a{
+	color: white;
+	margin-top: 0;
+}
+
+hr{
+	width: 50%;
+}
+
+#artist{
+	letter-spacing: 0;
+}
+
+span{
+	color: #b17d05;
+}
+
+
+
