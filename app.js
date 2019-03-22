@@ -9,7 +9,6 @@ const favicon = require('serve-favicon');
 
 const app = express();
 
-
 // use ejs-locals for all ejs templates
 app.engine('ejs', engine);
 // view engine setup
