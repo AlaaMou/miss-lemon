@@ -11,13 +11,14 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
+
 // use ejs-locals for all ejs templates
 app.engine('ejs', engine);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+
 
 app.use(logger('dev'));
 app.use(express.json());
