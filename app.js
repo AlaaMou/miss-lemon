@@ -6,8 +6,11 @@ const logger = require('morgan');
 const engine = require('ejs-mate');
 const indexRouter = require('./routes/index');
 const favicon = require('serve-favicon');
-
+const flash = require('connect-flash');
+const session = require('express-session');
 const app = express();
+
+
 
 // use ejs-locals for all ejs templates
 app.engine('ejs', engine);
@@ -17,11 +20,26 @@ app.set('view engine', 'ejs');
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+// express-session
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
+// flash message
+app.use(flash());
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// middleware function
+app.use(function(req, res, next){
+  res.locals.success = req.flash('success');
+  return next();
+})
 
 app.use('/', indexRouter);
 

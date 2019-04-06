@@ -1,5 +1,13 @@
 <% layout('/layouts/boilerplate') -%>
 
+<!--Flash message-->
+  <% if(success && success.length){ %>
+     <div class="container px-0">
+       <div class="alert alert-success"  role="alert">
+         <p class="text-dark"><%= success %></p>
+       </div>
+     </div>
+  <% } %>
 
 <!--Start About Me Section -->
     <div class="container my-5 pb-5">
@@ -20,5 +28,30 @@
     </div>
     
     <!-- End of Contact Section -->
+    
+<!--Start of Form Section-->
+<div class="bg-dark text-light mb-0" id="contact">
+   <div class="container py-5">
+    <h2 class="mb-0 text-center">Contact</h2>
+    <p class="text-info text-center">Have a question or want to work together?</p>
+    <div>
+      <form class="mx-auto" action="/contact" method="POST" id="email-form">
+         <div class="form-group">
+           <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter Your Email" name="email" required>
+           <small id="emailHelp" class="form-text text-muted">I'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+           <input type="text" class="form-control" id="name" placeholder="Full Name" name="name" required>
+         </div>
+        <div class="form-group">
+         <label for="message-area">Message</label>
+         <textarea class="form-control" id="message-area" rows="8" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" title="Send"> Send</button>
+      </form>
+      
+    </div>
+  </div>
+</div>
  
-     <% include ./layouts/footer %>
+    

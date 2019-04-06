@@ -1,5 +1,9 @@
-var express = require('express');
-var router = express.Router();
+require('dotenv').config()
+
+const express = require('express');
+const router = express.Router();
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -30,6 +34,21 @@ router.get('/books/second-book', function(req, res, next) {
 router.get('/books/third-book', function(req, res, next) {
   res.render('third-book');
 });
+
+/* POST Email Form */
+router.post('/contact', function(req, res, next){
+    const msg = {
+         to: 'amini.zahra74@yahoo.com',
+         from: req.body.name + '<'+ req.body.email +'>',
+         subject: 'My Website - New Message',
+          text: req.body.message
+          };
+          
+    sgMail.send(msg);
+    // add flash message
+    req.flash('success', 'Thanks a lot for your message. I will write back to you within 24 hours. Have a great day!')
+    res.redirect("/contact")
+})
 
 
 
